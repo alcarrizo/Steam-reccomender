@@ -72,23 +72,16 @@ df = df.drop(df[df["tags"].isnull()].index)
 df = df.reset_index()
 
 # Making an array containing the tags for every game in the dataset
-# and also making an array of the titles too find whether the target game exists in the dataset
-
 gameText = []
-gameTitles = []
 for i in range(len(df)):
     game = df.loc[i]
     temp = ", ".join(game["tags"])
     gameText.append(temp)
-    gameTitles.append(game["title"].upper())
 
 # "Deponia"
 getRecs = True  # boolean variable to loop off of
 while(getRecs):
     targetGameTitle = input('Please Enter the name of a Steam game: ')
-    while(targetGameTitle.upper() not in gameTitles):
-        targetGameTitle = input(
-            "I'm sorry that game does not exist in my database, please enter another: ")
     targetGame = getGameInfo(targetGameTitle, df)
     game = ", ".join(targetGame["tags"])
 
@@ -144,7 +137,9 @@ while(getRecs):
 
     cont = input("Would you like recommendations for another game?(Y/N): ")
     while (cont.upper() != 'N' and cont.upper() != 'Y'):
+    {
         cont = input("Please enter (Y/N): ")
+    }
     if(cont.upper() == 'N'):
         getRecs = False
 print("Thank you have a nice day")

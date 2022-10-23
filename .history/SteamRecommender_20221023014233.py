@@ -86,7 +86,7 @@ for i in range(len(df)):
 getRecs = True  # boolean variable to loop off of
 while(getRecs):
     targetGameTitle = input('Please Enter the name of a Steam game: ')
-    while(targetGameTitle.upper() not in gameTitles):
+    while(targetGameTitl.upper() not in gameTitles):
         targetGameTitle = input(
             "I'm sorry that game does not exist in my database, please enter another: ")
     targetGame = getGameInfo(targetGameTitle, df)

@@ -80,15 +80,13 @@ for i in range(len(df)):
     game = df.loc[i]
     temp = ", ".join(game["tags"])
     gameText.append(temp)
-    gameTitles.append(game["title"].upper())
+    temp = game["title"]
+    gameText.append(temp)
 
 # "Deponia"
 getRecs = True  # boolean variable to loop off of
 while(getRecs):
     targetGameTitle = input('Please Enter the name of a Steam game: ')
-    while(targetGameTitle.upper() not in gameTitles):
-        targetGameTitle = input(
-            "I'm sorry that game does not exist in my database, please enter another: ")
     targetGame = getGameInfo(targetGameTitle, df)
     game = ", ".join(targetGame["tags"])
 
